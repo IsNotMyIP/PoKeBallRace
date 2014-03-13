@@ -12,13 +12,15 @@
       var x = this.game.width / 2
         , y = this.game.height / 2;
 
-      this.pokeball1 = this.add.sprite(x, y, 'player');
+      this.pokeball1 = this.add.sprite(x, y, 'ball');
       this.pokeball1.anchor.setTo(0.5, 0.5);
       this.pokeball1.body.bounce.setTo(1,1);
+      this.pokeball1.body.setCircle(17.5,17.5,17.5);
 
-      this.pokeball2 = this.add.sprite(x, y, 'player');
+      this.pokeball2 = this.add.sprite(x, y, 'ball');
       this.pokeball2.anchor.setTo(0.5, 0.5);
       this.pokeball2.body.bounce.setTo(1,1);
+      this.pokeball2.body.setCircle(17.5,17.5,17.5);
 
       this.input.onDown.add(this.onInputDown, this);
     },
