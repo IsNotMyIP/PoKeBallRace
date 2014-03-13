@@ -4,6 +4,8 @@
   function Game() {
     this.pokeball1 = null;
     this.pokeball2 = null;
+    this.sumo = null;
+    this.a = 100;
   }
 
   Game.prototype = {
@@ -11,6 +13,9 @@
     create: function () {
       var x = this.game.width / 2
         , y = this.game.height / 2;
+
+      this.sumo = this.add.sprite(x-(500/2)+22, y-(500/2)+27, 'sumo');
+      //this.sumo.body.immovable = false;
 
       this.pokeball1 = this.add.sprite(x, y, 'ball');
       this.pokeball1.anchor.setTo(0.5, 0.5);
@@ -23,6 +28,7 @@
       this.pokeball2.body.bounce.setTo(0.9, 0.9);
       this.pokeball2.body.setCircle(17.5,17.5,17.5);
       this.pokeball2.body.linearDamping = 0.8;
+      ////////////////////////////////////////////////
 
       this.input.onDown.add(this.onInputDown, this);
     },
@@ -34,6 +40,9 @@
       y = this.input.position.y;
       //cx = this.world.centerX;
       //cy = this.world.centerY;
+      this.a -= 0.005 * this.time.elapsed;
+      //this.sumo.body.setCircle(this.a, this.a, this.a);
+      //console.log(this.a);
 
       this.pokeball1.body.collideWorldBounds = true;
       this.pokeball2.body.collideWorldBounds = true;
@@ -108,11 +117,28 @@
       //}
 
       this.game.physics.collide(this.pokeball1, this.pokeball2);
+      
+      if(this.distance(this.pokeball1) >= 225) {
+        this.game.state.start('menu');
+      }
+      if(this.distance(this.pokeball2) >= 225) {
+        this.game.state.start('menu');
+      }
+
+
+      /*var z = this.distance(this.pokeball1);
+      console.log(z);*/
+
     },
 
     onInputDown: function () {
       this.game.state.start('menu');
-    }
+    },
+
+    distance: function (bola) {
+      return Math.sqrt((bola.x-this.game.width/2)*(bola.x-this.game.width/2)+(bola.y-this.game.height/2)*(bola.y-this.game.height/2));
+    },
+
 
   };
 
@@ -120,3 +146,7 @@
   window['pokeballrace'].Game = Game;
 
 }());
+
+    
+
+    
