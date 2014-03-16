@@ -16,6 +16,8 @@
 
 
       this.lava = this.game.add.sprite(0, 0, 'lava');
+      this.lava.body.velocity.x= 20;
+      this.lava.body.velocity.y= 20;
       this.sumo = this.add.sprite(x-(500/2)+22, y-(500/2)+27, 'sumo');
       //this.sumo.body.immovable = false;
 
@@ -48,7 +50,6 @@
 
       this.pokeball1.body.collideWorldBounds = true;
       this.pokeball2.body.collideWorldBounds = true;
-
 
       if (this.lava.x + 1024 <= this.game.width + 5){
         this.lava.body.velocity.x= 20;
