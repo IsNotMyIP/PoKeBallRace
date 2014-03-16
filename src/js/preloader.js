@@ -18,6 +18,7 @@
       this.load.image('ballpurple', 'assets/ball2.png');
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
       this.load.image('sumo', 'assets/SumoRing.png');
+      this.load.image('lava', 'assets/lava.jpg');
     },
 
     create: function () {
