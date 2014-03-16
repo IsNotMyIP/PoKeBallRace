@@ -17,13 +17,13 @@
       this.sumo = this.add.sprite(x-(500/2)+22, y-(500/2)+27, 'sumo');
       //this.sumo.body.immovable = false;
 
-      this.pokeball1 = this.add.sprite(x, y, 'ball');
+      this.pokeball1 = this.add.sprite(x +52, y, 'ballblue');
       this.pokeball1.anchor.setTo(0.5, 0.5);
       this.pokeball1.body.bounce.setTo(0.9,0.9);
       this.pokeball1.body.setCircle(17.5,17.5,17.5);
       this.pokeball1.body.linearDamping = 0.8;
-      ////////////////////////////////////////////////
-      this.pokeball2 = this.add.sprite(x, y, 'ball');
+      ///////////////////////////////////////////////
+      this.pokeball2 = this.add.sprite(x -62, y, 'ballpurple');
       this.pokeball2.anchor.setTo(0.5, 0.5);
       this.pokeball2.body.bounce.setTo(0.9, 0.9);
       this.pokeball2.body.setCircle(17.5,17.5,17.5);
@@ -119,14 +119,16 @@
       this.game.physics.collide(this.pokeball1, this.pokeball2);
       
       if(this.distance(this.pokeball1) >= 225) {
-        this.game.state.start('menu');
+        window.pokeballrace.Global.winner = 'Purple Player!';
+        this.game.state.start('winner');
       }
       if(this.distance(this.pokeball2) >= 225) {
-        this.game.state.start('menu');
+        window.pokeballrace.Global.winner = 'Blue Player!';
+        this.game.state.start('winner');
       }
 
-
-      /*var z = this.distance(this.pokeball1);
+      /*
+      var z = this.distance(this.pokeball1);
       console.log(z);*/
 
     },

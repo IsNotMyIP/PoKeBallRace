@@ -1,23 +1,23 @@
 (function() {
   'use strict';
 
-  function Menu() {
+  function Winner() {
     this.titleTxt = null;
     this.startTxt = null;
   }
 
-  Menu.prototype = {
+  Winner.prototype = {
 
     create: function () {
       var x = this.game.width / 2
         , y = this.game.height / 2;
 
 
-      this.titleTxt = this.add.bitmapText(x, y, 'Example Game', {font: '16px minecraftia', align: 'center'});
+      this.titleTxt = this.add.bitmapText(x, y, 'The winner is:', {font: '16px minecraftia', align: 'center'});
       this.titleTxt.anchor.setTo(0.5, 0.5);
 
       y = y + this.titleTxt.height + 5;
-      this.startTxt = this.add.bitmapText(x, y, 'START', {font: '12px minecraftia', align: 'center'});
+      this.startTxt = this.add.bitmapText(x, y, window.pokeballrace.Global.winner, {font: '12px minecraftia', align: 'center'});
       this.startTxt.anchor.setTo(0.5, 0.5);
 
       this.input.onDown.add(this.onDown, this);
@@ -37,6 +37,6 @@
   };
 
   window['pokeballrace'] = window['pokeballrace'] || {};
-  window['pokeballrace'].Menu = Menu;
+  window['pokeballrace'].Winner = Winner;
 
 }());

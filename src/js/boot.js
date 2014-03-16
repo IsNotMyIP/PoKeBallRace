@@ -31,6 +31,7 @@
 
   window['pokeballrace'] = window['pokeballrace'] || {};
   window['pokeballrace'].Boot = Boot;
+  window['pokeballrace'].Global = {winner: 0};
 
 }());
 
